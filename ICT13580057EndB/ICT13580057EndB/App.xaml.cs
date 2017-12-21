@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using ICT13580057EndB.Helpers;
 using Xamarin.Forms;
 
 namespace ICT13580057EndB
 {
     public partial class App : Application
     {
-        public App()
+        public static DbHelper DbHelper { get; set; }
+        
+        public App(string dbpath)
         {
             InitializeComponent();
-
-            MainPage = new ICT13580057EndB.MainPage();
+            DbHelper = new DbHelper(dbpath); //+
+            MainPage = new NavigationPage(new ICT13580057EndB.MainPage());
         }
 
         protected override void OnStart()

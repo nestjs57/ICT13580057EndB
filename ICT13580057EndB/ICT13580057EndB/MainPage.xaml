@@ -2,10 +2,99 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ICT13580057EndB"
-             x:Class="ICT13580057EndB.MainPage">
+             x:Class="ICT13580057EndB.MainPage"
+             Title="12Cars">
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="เพิ่ม"
+            x:Name="newButton"
+            />
+    </ContentPage.ToolbarItems>
+    <ListView
+        x:Name="productListView"
+        RowHeight="100">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+
+
+                    <ViewCell.ContextActions>
+                        <MenuItem
+                            Text="Edit"
+                            CommandParameter="{Binding .}"
+                            Clicked="Edit_Clicked"/>
+                        <MenuItem
+                            Text="Delete"
+                            CommandParameter="{Binding .}"
+                            IsDestructive="true"
+                            Clicked="Delete_Clicked"/>
+                    </ViewCell.ContextActions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0" />
+                            <ColumnDefinition  />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+                       
+                        <StackLayout
+                            Grid.Column="1">
+                            <Label
+                                Text="{Binding Type}"
+                                FontAttributes="Bold"
+                                TextColor="Sienna"/>
+                            <Label
+                                Text="{Binding brand}"
+                                LineBreakMode="TailTruncation"/>
+                            <Label
+                                Text="{Binding roon}"
+                                LineBreakMode="TailTruncation"/>
+                            <Label
+                                Text="{Binding year}"
+                                LineBreakMode="TailTruncation"/>
+                            
+                            <Label
+                                Text="{Binding Productprice}"
+                                LineBreakMode="TailTruncation"/>
+
+                            <Label
+                                Text="{Binding contry}"
+                                LineBreakMode="TailTruncation"/>
+                        </StackLayout>
+                        <StackLayout  Grid.Column="2" >
+                            <Label
+                                Text="{Binding numMile}"
+                                LineBreakMode="TailTruncation"/>
+                            <Label
+                                Text="{Binding color}"
+                                LineBreakMode="TailTruncation"/>
+                            <Label
+                                Text="{Binding deler}"
+                                LineBreakMode="TailTruncation"/>
+                            <Label
+                                Text="{Binding Description}"
+                                LineBreakMode="TailTruncation"/>
+                        </StackLayout>
+
+                        <StackLayout  Grid.Column="3" >
+                           
+                            <Label
+                                Text="{Binding color}"
+                                LineBreakMode="TailTruncation"/>
+                            <Label
+                                Text="{Binding contry}"
+                                LineBreakMode="TailTruncation"/>
+                            <Label
+                                Text="{Binding phone}"
+                                LineBreakMode="TailTruncation"/>
+                        </StackLayout>
+
+                    </Grid>
+
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+    </ListView>
 
 </ContentPage>
